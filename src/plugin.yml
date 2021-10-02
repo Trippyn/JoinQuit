@@ -1,4 +1,9 @@
 name: JoinQuit
 main: me.Sunney.Main
 author: Sunney
-version: 1.0
+version: 1.2
+
+commands:
+  joinquit:
+    aliases: [jq]
+    permission: joinquit.admin

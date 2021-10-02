@@ -1,6 +1,9 @@
 package me.Sunney;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,7 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Main extends JavaPlugin implements Listener
+public class Main extends JavaPlugin implements Listener, CommandExecutor
 {
 	
 	public BaseConfig conf;
@@ -70,5 +73,40 @@ public class Main extends JavaPlugin implements Listener
 	public static String translate(String text) {
 		return ChatColor.translateAlternateColorCodes('&', text);
 	}
+	
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	    if (cmd.getName().equalsIgnoreCase("joinquit") && 
+	      sender instanceof Player) {
+	      Player p = (Player)sender;
+	      if (p.hasPermission("joinquit.admin") || p.isOp()) {
+	        String Arg1;
+	        int argumentCount = args.length;
+	        switch (argumentCount) {
+	          case 0:
+	            sender.sendMessage(translate("&8---------------------------"));
+	            sender.sendMessage(translate("&2JoinQuit &8| &fCoded by &2Sunney"));
+	            sender.sendMessage(translate(""));
+	            sender.sendMessage(translate("&2* &fPlugin: &2" + getDescription().getName()));
+	            sender.sendMessage(translate("&2* &fVersion: &2" + getDescription().getVersion()));
+	            sender.sendMessage(translate(""));
+	            sender.sendMessage(translate("&2* &2/joinquit reload &8- &fReload plugin"));
+	            sender.sendMessage(translate("&8---------------------------"));
+	            return true;
+	          case 1:
+	            Arg1 = args[0].toLowerCase();
+	            if (Arg1.equals("reload")) {
+	              getConf().reload();
+	              sender.sendMessage(translate("&2JoinQuit &8| &fPlugin successfully reloaded"));
+	              return true;
+	            } 
+	            break;
+	        } 
+	      } else {
+	        p.sendMessage(translate("&cYou dont have enough permissions to do this"));
+	        return true;
+	      } 
+	    } 
+	    return false;
+	  }
 	
 }
