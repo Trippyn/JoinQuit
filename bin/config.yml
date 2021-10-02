@@ -1,0 +1,22 @@
+JoinQuit:
+  enabled: true
+  Join:
+    message: "&8[&a+&8] &fPlayer &a%player% &fhas joined"
+    disableVanillaMsg: false
+  Quit:
+    message: "&8[&c-&8] &fPlayer &a%player% &fhas left"
+    disableVanillaMsg: false
+  Title:
+    title: "&fWelcome to our"
+    subTitle: "&2Network"
+  Motd:
+    joinMotd: |-
+        &8 &l⬛⬛⬛⬛⬛⬛⬛⬛⬛ &2&lSERVER&a&l.COM &8&l⬛⬛⬛⬛⬛⬛⬛⬛⬛
+        &r     
+        &f            Welcome on SERVER, &2%player%
+        &r      
+        &2 &lNEWS
+        &f    - Added &8➠ &2/cmd
+        &f    - Added &8➠ &2/cmd
+        &r              
+        &8 &l⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
